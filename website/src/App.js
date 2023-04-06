@@ -11,7 +11,7 @@ function App() {
     return (
         <div className='App'>
             TEST {process.env.PUBLIC_URL} 
-            <HashRouter basename={process.env.PUBLIC_URL}>
+            <HashRouter basename='/SolarSystemVisualization'>
                 <RoutesComponent />
             </HashRouter>
         </div>
