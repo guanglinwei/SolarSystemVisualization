@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Routes, Route, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { Routes, Route, Outlet, useLocation, useNavigate, HashRouter } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import TopAppBar from './components/TopAppBar';
 import AboutPage from './pages/AboutPage';
@@ -10,10 +10,10 @@ import { useUnityContext } from 'react-unity-webgl';
 function App() {
     return (
         <div className='App'>
-            TEST
-            <BrowserRouter basename={process.env.PUBLIC_URL}>
+            TEST {process.env.PUBLIC_URL}
+            <HashRouter basename={process.env.PUBLIC_URL}>
                 <RoutesComponent />
-            </BrowserRouter>
+            </HashRouter>
         </div>
     );
 }
@@ -43,7 +43,7 @@ function RoutesComponent() {
     return (
         <Box sx={{ display: 'flex', maxHeight: '100%', height: '100vh', flexDirection: 'column' }}>
             <Routes>
-                <Route path='/' element={<>
+                <Route exact path='/' element={<>
                     <TopAppBar pages={pages}
                         unloadBeforeRedirect={location.pathname === '/sim'}
                         needToUnloadCallback={needToUnloadCallback} />
