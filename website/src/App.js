@@ -1,5 +1,5 @@
 import './App.css';
-import { Routes, Route, Outlet, useLocation, useNavigate, BrowserRouter } from 'react-router-dom';
+import { Routes, Route, Outlet, useLocation, useNavigate, HashRouter } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import TopAppBar from './components/TopAppBar';
 import AboutPage from './pages/AboutPage';
@@ -11,9 +11,9 @@ function App() {
     return (
         <div className='App'>
             TEST {process.env.PUBLIC_URL} 
-            <BrowserRouter basename={`/${process.env.PUBLIC_URL}`}>
+            <HashRouter>
                 <RoutesComponent />
-            </BrowserRouter>
+            </HashRouter>
         </div>
     );
 }
@@ -29,10 +29,10 @@ function RoutesComponent() {
     const navigate = useNavigate();
 
     const { unityProvider, unload } = useUnityContext({
-        loaderUrl: './UnityBuild/Build/dist.loader.js',
-        dataUrl: './UnityBuild/Build/dist.data.unityweb',
-        frameworkUrl: './UnityBuild/Build/dist.framework.js.unityweb',
-        codeUrl: './UnityBuild/Build/dist.wasm.unityweb'
+        loaderUrl: `${process.env.PUBLIC_URL}/UnityBuild/Build/dist.loader.js`,
+        dataUrl: `${process.env.PUBLIC_URL}/UnityBuild/Build/dist.data.unityweb`,
+        frameworkUrl: `${process.env.PUBLIC_URL}/UnityBuild/Build/dist.framework.js.unityweb`,
+        codeUrl: `${process.env.PUBLIC_URL}/UnityBuild/Build/dist.wasm.unityweb`
     });
 
     async function needToUnloadCallback(path) {

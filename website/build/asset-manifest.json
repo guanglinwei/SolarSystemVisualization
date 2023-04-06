@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "./static/css/main.964fdded.css",
-    "main.js": "./static/js/main.528e7616.js",
-    "static/js/787.4bcd268f.chunk.js": "./static/js/787.4bcd268f.chunk.js",
-    "index.html": "./index.html",
-    "main.964fdded.css.map": "./static/css/main.964fdded.css.map",
-    "main.528e7616.js.map": "./static/js/main.528e7616.js.map",
-    "787.4bcd268f.chunk.js.map": "./static/js/787.4bcd268f.chunk.js.map"
+    "main.css": "/SolarSystemVisualization/static/css/main.964fdded.css",
+    "main.js": "/SolarSystemVisualization/static/js/main.d9b5d400.js",
+    "static/js/787.4bcd268f.chunk.js": "/SolarSystemVisualization/static/js/787.4bcd268f.chunk.js",
+    "index.html": "/SolarSystemVisualization/index.html",
+    "main.964fdded.css.map": "/SolarSystemVisualization/static/css/main.964fdded.css.map",
+    "main.d9b5d400.js.map": "/SolarSystemVisualization/static/js/main.d9b5d400.js.map",
+    "787.4bcd268f.chunk.js.map": "/SolarSystemVisualization/static/js/787.4bcd268f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.964fdded.css",
-    "static/js/main.528e7616.js"
+    "static/js/main.d9b5d400.js"
   ]
 }
