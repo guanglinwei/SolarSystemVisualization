@@ -10,6 +10,7 @@ import { useUnityContext } from 'react-unity-webgl';
 function App() {
     return (
         <div className='App'>
+            TEST
             <BrowserRouter basename={process.env.PUBLIC_URL}>
                 <RoutesComponent />
             </BrowserRouter>
