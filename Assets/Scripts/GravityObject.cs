@@ -2,21 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class GravityObject : MonoBehaviour
 {
-    private const double gravConstant = .5;//6.67408e-10;
+    private const double gravConstant = 6.67408e-10;
     private Rigidbody rb;
 
     [HideInInspector]
     public Vector3 velocity;
 
+    [HideInInspector]
+    public float rotationSpeed;
+
     public Vector3 initialVelocity = Vector3.zero; // For circular orbit, v = sqrt(G*M/r)
-    public float mass = 1;
+    public float mass = 1f;
+    public float radius = 1f;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
         velocity = initialVelocity;
+    }
+
+    private void Update()
+    {
+        transform.localScale = Vector3.one * radius;
     }
 
     public void UpdateVelocity(GravityObject[] objects, float deltaTime)
@@ -25,7 +35,7 @@ public class GravityObject : MonoBehaviour
         {
             if (obj != this)
             {
-                Vector3 vec = obj.rb.position - this.rb.position;
+                Vector3 vec = obj.rb.position - rb.position;
                 float sqrDist = vec.sqrMagnitude;
                 Vector3 dir = vec.normalized;
 
@@ -38,5 +48,6 @@ public class GravityObject : MonoBehaviour
     public void UpdatePosition(float deltaTime)
     {
         rb.MovePosition(rb.position + velocity * deltaTime);
+        transform.Rotate(0f, rotationSpeed * deltaTime, 0f);
     }
 }

@@ -27,11 +27,12 @@ function RoutesComponent() {
     const location = useLocation();
     const navigate = useNavigate();
 
+    // Build location is website/public/UnityBuild
     const { unityProvider, unload } = useUnityContext({
-        loaderUrl: `${process.env.PUBLIC_URL}/UnityBuild/Build/dist.loader.js`,
-        dataUrl: `${process.env.PUBLIC_URL}/UnityBuild/Build/dist.data.unityweb`,
-        frameworkUrl: `${process.env.PUBLIC_URL}/UnityBuild/Build/dist.framework.js.unityweb`,
-        codeUrl: `${process.env.PUBLIC_URL}/UnityBuild/Build/dist.wasm.unityweb`
+        loaderUrl: `${process.env.PUBLIC_URL}/UnityBuild/Build/UnityBuild.loader.js`,
+        dataUrl: `${process.env.PUBLIC_URL}/UnityBuild/Build/UnityBuild.data.unityweb`,
+        frameworkUrl: `${process.env.PUBLIC_URL}/UnityBuild/Build/UnityBuild.framework.js.unityweb`,
+        codeUrl: `${process.env.PUBLIC_URL}/UnityBuild/Build/UnityBuild.wasm.unityweb`
     });
 
     async function needToUnloadCallback(path) {

@@ -5,6 +5,8 @@ using UnityEngine;
 public class SimulationController : MonoBehaviour
 {
     private GravityObject[] gravityObjects;
+    private bool running = true;
+    public float timeScale = 1.0f;
 
     void Awake()
     {
@@ -13,14 +15,17 @@ public class SimulationController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!running)
+            return;
+
         foreach (GravityObject obj in gravityObjects)
         {
-            obj.UpdateVelocity(gravityObjects, Time.fixedDeltaTime);
+            obj.UpdateVelocity(gravityObjects, Time.fixedDeltaTime * timeScale);
         }
 
         foreach (GravityObject obj in gravityObjects)
         {
-            obj.UpdatePosition(Time.fixedDeltaTime);
+            obj.UpdatePosition(Time.fixedDeltaTime * timeScale);
         }
     }
 }
