@@ -8,6 +8,7 @@ function TopAppBar({ pages, unloadBeforeRedirect = false, needToUnloadCallback =
         event.preventDefault();
         needToUnloadCallback(path);
     }
+    
     return (
         <AppBar position='sticky' sx={{ backgroundColor: '#2d2d2d' }}>
             <Toolbar>

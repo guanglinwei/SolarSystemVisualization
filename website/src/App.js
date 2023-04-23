@@ -6,6 +6,8 @@ import AboutPage from './pages/AboutPage';
 import SimulationPage from './pages/SimulationPage';
 import { Box } from '@mui/material';
 import { useUnityContext } from 'react-unity-webgl';
+import ContactPage from './pages/ContactPage';
+import SpecificBlogPost from './pages/blogs/SpecificBlogPost';
 
 function App() {
     return (
@@ -20,7 +22,8 @@ function App() {
 const pages = [
     { path: "/", name: "Home" },
     { path: "/about", name: "About" },
-    { path: "/sim", name: "Simulation" }
+    { path: "/contact", name: "Contact" },
+    { path: "/sim", name: "Simulation" },
 ];
 
 function RoutesComponent() {
@@ -36,7 +39,7 @@ function RoutesComponent() {
     });
 
     async function needToUnloadCallback(path) {
-        if(unload) {
+        if (unload) {
             await unload();
             navigate(path);
         }
@@ -53,6 +56,8 @@ function RoutesComponent() {
                 </>}>
                     <Route index element={<HomePage />} />
                     <Route path='/about' element={<AboutPage />} />
+                    <Route path='/blog/:pathFilename' element={<SpecificBlogPost isFullArticle={true}/>} />
+                    <Route path='/contact' element={<ContactPage />} />
                     <Route path='/sim' element={<SimulationPage unityProvider={unityProvider} />} />
                 </Route>
             </Routes>

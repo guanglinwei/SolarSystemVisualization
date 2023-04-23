@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/SolarSystemVisualization/static/css/main.964fdded.css",
-    "main.js": "/SolarSystemVisualization/static/js/main.2ba233cc.js",
+    "main.js": "/SolarSystemVisualization/static/js/main.4fa00547.js",
     "static/js/787.4bcd268f.chunk.js": "/SolarSystemVisualization/static/js/787.4bcd268f.chunk.js",
     "index.html": "/SolarSystemVisualization/index.html",
     "main.964fdded.css.map": "/SolarSystemVisualization/static/css/main.964fdded.css.map",
-    "main.2ba233cc.js.map": "/SolarSystemVisualization/static/js/main.2ba233cc.js.map",
+    "main.4fa00547.js.map": "/SolarSystemVisualization/static/js/main.4fa00547.js.map",
     "787.4bcd268f.chunk.js.map": "/SolarSystemVisualization/static/js/787.4bcd268f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.964fdded.css",
-    "static/js/main.2ba233cc.js"
+    "static/js/main.4fa00547.js"
   ]
 }
