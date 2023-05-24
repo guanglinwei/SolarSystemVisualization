@@ -1,14 +1,13 @@
 using UnityEngine;
-using TMPro;
 
 public class LockedCameraController : MonoBehaviour
 {
     public Transform target; // the planet game object that the camera will follow
-    public float distance = 10f; // the distance between the camera and the planet
-    public float height = 5f; // the height of the camera above the planet
-    public float rotateSpeed = 1.2f; // the speed of camera rotation
-    public float zoomSpeed = 30f;
-    public float fastZoomSpeed = 200f;
+    public float distance; // the distance between the camera and the planet
+    public float height; // the height of the camera above the planet
+    public float rotateSpeed; // the speed of camera rotation
+    public float zoomSpeed;
+    public float fastZoomSpeed;
 
     private Vector3 offset; // the offset of the camera from the planet
     private float currentDistance; // the current distance between the camera and the planet
@@ -21,7 +20,8 @@ public class LockedCameraController : MonoBehaviour
     private Vector3 lastCameraPositionBeforeLerp;
     private Quaternion lastCameraRotationBeforeLerp;
 
-    public TMP_InputField centerCameraOnInputField;
+    [HideInInspector]
+    public bool isRealPlanetScale = false;
 
     private void Start()
     {
@@ -66,8 +66,8 @@ public class LockedCameraController : MonoBehaviour
             }
 
             float mouseScroll = Input.GetAxis("Mouse ScrollWheel");
-            float currentZoomSpeed = Mathf.Max(1f, Mathf.Sqrt(currentDistance / 160f)) * (Input.GetKey(KeyCode.LeftControl) ? fastZoomSpeed : zoomSpeed);
-            currentDistance = Mathf.Clamp(currentDistance - mouseScroll * currentZoomSpeed, 20f, 3000f);
+            float currentZoomSpeed = Mathf.Max(isRealPlanetScale ? 0.01f : 1f, Mathf.Sqrt(currentDistance / 160f)) * (Input.GetKey(KeyCode.LeftControl) ? fastZoomSpeed : zoomSpeed);
+            currentDistance = Mathf.Clamp(currentDistance - mouseScroll * currentZoomSpeed, 0.1f, 3000f);
 
             // calculate the desired position of the camera
             desiredPosition = target.position + currentRotation * (offset.normalized * currentDistance + Vector3.up * height);
@@ -79,9 +79,9 @@ public class LockedCameraController : MonoBehaviour
 
     }
 
-    public void OnChangeCenterObject()
+    public void SetCenteredObject(GameObject newTarget)
     {
-        GameObject newTarget = GameObject.Find(System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(centerCameraOnInputField.text));
+        //GameObject newTarget = GameObject.Find(System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(centerCameraOnInputField.text));
         if (newTarget != null && !newTarget.Equals(target.gameObject))
         {
             target = newTarget.transform;

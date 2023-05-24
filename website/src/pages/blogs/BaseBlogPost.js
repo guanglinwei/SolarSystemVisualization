@@ -10,7 +10,7 @@ function BlogPost({ title, date, isFullArticle = true, filename, imagePath, imag
                     <h2 style={{ marginBottom: '4px' }}>{title}</h2>
                     <div style={{ color: 'grey' }}>{date}</div>
                     <hr style={{ width: '80%' }} />
-                    <div>
+                    <div style={{ width: '70%', margin: 'auto', textAlign: 'left' }}>
                         {children}
                     </div>
                 </div>

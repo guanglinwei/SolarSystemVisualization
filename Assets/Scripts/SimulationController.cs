@@ -28,4 +28,12 @@ public class SimulationController : MonoBehaviour
             obj.UpdatePosition(Time.fixedDeltaTime * timeScale);
         }
     }
+
+    public void SetIsRealScale(bool isRealScale)
+    {
+        foreach (GravityObject obj in gravityObjects)
+        {
+            obj.isInRealScale = isRealScale;
+        }
+    }
 }

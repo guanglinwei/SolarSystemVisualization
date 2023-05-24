@@ -7,7 +7,7 @@ function Blog03262023(props) {
         <div>
             <BlogPost title={'Why Unity?'} date={'March 26, 2023'} filename={'Blog03262023'}
                 imagePath={'blogs/unitylogo.svg'} imageAlt={'Unity Logo'} {...props}>
-                <div style={{ width: '80%', margin: 'auto', textAlign: 'left' }}>
+                <div>
                     <p>
                         When I started this project, I had to decide between 3 different rendering engines:
                         <span> <a href='https://unity.com/'>Unity</a>, </span>

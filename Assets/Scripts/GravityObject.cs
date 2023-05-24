@@ -18,6 +18,11 @@ public class GravityObject : MonoBehaviour
     public float mass = 1f;
     public float radius = 1f;
 
+    [HideInInspector]
+    public float realScaleRadius = 1f;
+    [HideInInspector]
+    public bool isInRealScale = false;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -26,7 +31,7 @@ public class GravityObject : MonoBehaviour
 
     private void Update()
     {
-        transform.localScale = Vector3.one * radius;
+        transform.localScale = Vector3.one * (isInRealScale ? realScaleRadius : radius);
     }
 
     public void UpdateVelocity(GravityObject[] objects, float deltaTime)
