@@ -13,6 +13,10 @@ public class GravityObject : MonoBehaviour
 
     [HideInInspector]
     public float rotationSpeed;
+    [HideInInspector]
+    public Quaternion currentRotation;
+    [HideInInspector]
+    public Vector3 rotationAxis = Vector3.up;
 
     public Vector3 initialVelocity = Vector3.zero; // For circular orbit, v = sqrt(G*M/r)
     public float mass = 1f;
@@ -22,19 +26,22 @@ public class GravityObject : MonoBehaviour
     public float realScaleRadius = 1f;
     [HideInInspector]
     public bool isInRealScale = false;
+    [HideInInspector]
+    public PlanetInitializer.PlanetInfo info;
 
-    void Awake()
+    public virtual void Awake()
     {
         rb = GetComponent<Rigidbody>();
         velocity = initialVelocity;
+        currentRotation = transform.rotation;
     }
 
-    private void Update()
+    public virtual void Update()
     {
-        transform.localScale = Vector3.one * (isInRealScale ? realScaleRadius : radius);
+        transform.localScale = Vector3.one * GetCurrentRadius();
     }
 
-    public void UpdateVelocity(GravityObject[] objects, float deltaTime)
+    public virtual void UpdateVelocity(GravityObject[] objects, float deltaTime)
     {
         foreach (GravityObject obj in objects)
         {
@@ -50,9 +57,20 @@ public class GravityObject : MonoBehaviour
         }
     }
 
-    public void UpdatePosition(float deltaTime)
+    public virtual void UpdateRotation(float deltaTime)
+    {
+        currentRotation *= Quaternion.AngleAxis(rotationSpeed * deltaTime, rotationAxis);
+    }
+
+    public virtual void UpdatePosition(float deltaTime)
     {
         rb.MovePosition(rb.position + velocity * deltaTime);
-        transform.Rotate(0f, rotationSpeed * deltaTime, 0f);
+        // transform.Rotate(0f, rotationSpeed * deltaTime, 0f);
+        transform.rotation = currentRotation;
+    }
+
+    public float GetCurrentRadius()
+    {
+        return isInRealScale ? realScaleRadius : radius;
     }
 }

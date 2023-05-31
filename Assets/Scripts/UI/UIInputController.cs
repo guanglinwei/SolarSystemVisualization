@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class UIInputController : MonoBehaviour
@@ -6,11 +7,13 @@ public class UIInputController : MonoBehaviour
     public TMP_InputField centerCameraOnInputField;
     private LockedCameraController cameraController;
 
-    public UnityEngine.UI.Toggle toggleOrbitalLinesField;
+    public Toggle toggleOrbitalLinesField;
     private CentralGravityObject centralGravityObject;
 
-    public UnityEngine.UI.Toggle toggleRealPlanetScaleField;
+    public Toggle toggleRealPlanetScaleField;
     private SimulationController simulationController;
+
+    private GravityObjectInfoPanel infoPanel;
 
     private void Awake()
     {
@@ -22,6 +25,9 @@ public class UIInputController : MonoBehaviour
 
         simulationController = FindObjectOfType<SimulationController>();
         toggleRealPlanetScaleField.onValueChanged.AddListener(delegate { OnToggleRealPlanetScaleField(); });
+
+        infoPanel = FindObjectOfType<GravityObjectInfoPanel>();
+        infoPanel.Init();
     }
 
     public void OnChangeCenterCameraInputField()

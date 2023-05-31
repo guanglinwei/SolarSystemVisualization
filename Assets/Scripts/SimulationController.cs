@@ -21,6 +21,7 @@ public class SimulationController : MonoBehaviour
         foreach (GravityObject obj in gravityObjects)
         {
             obj.UpdateVelocity(gravityObjects, Time.fixedDeltaTime * timeScale);
+            obj.UpdateRotation(Time.fixedDeltaTime * timeScale);
         }
 
         foreach (GravityObject obj in gravityObjects)
