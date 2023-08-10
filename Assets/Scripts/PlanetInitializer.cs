@@ -56,12 +56,12 @@ public class PlanetInitializer : MonoBehaviour
     {
         //              Name        Mass    Radius  InitialDisplacement  InitialVelocity  InitialInclination  RotationPeriod  Obliquity
         new PlanetInfo("Mercury", 0.330e24f,  2440,         57.9e6f,              47.4f,            7f,             1407.6f,       .034f),
-        new PlanetInfo("Venus",   4.870e24f,  6052,        108.2e6f,                35f,          3.4f,            -5832.5f,      177.4f),
+        new PlanetInfo("Venus",   4.870e24f,  6052,        108.2e6f,                35f,          3.4f,             5832.5f,      177.4f),
         new PlanetInfo("Earth",   5.970e24f,  6371,        149.6e6f,              29.8f,            0f,               23.9f,       23.4f),
         new PlanetInfo("Mars",    0.642e24f,  3390,          228e6f,              24.1f,          1.8f,               24.6f,       25.2f),
         new PlanetInfo("Jupiter",  1898e24f, 69911,        778.5e6f,              13.1f,          1.3f,                9.9f,        3.1f),
         new PlanetInfo("Saturn",    568e24f, 58232,         1432e6f,               9.7f,          2.5f,               10.7f,       26.7f),
-        new PlanetInfo("Uranus",   86.8e24f, 25362,         2867e6f,               6.8f,          0.8f,              -17.2f,       97.8f),
+        new PlanetInfo("Uranus",   86.8e24f, 25362,         2867e6f,               6.8f,          0.8f,               17.2f,       97.8f),
         new PlanetInfo("Neptune",   102e24f, 24622,         4515e6f,               5.4f,          1.8f,               16.1f,       28.3f),
         //new PlanetInfo("Pluto", 0, 0, 5900),
     };
@@ -110,7 +110,7 @@ public class PlanetInitializer : MonoBehaviour
         sunGravityObject.mass = sunInfo.Mass * massScale;
         sunGravityObject.radius = sunInfo.Radius * planetScale * sunScale;
         sunGravityObject.realScaleRadius = sunInfo.Radius;
-        sunGravityObject.rotationSpeed = 1f / (10f * sunInfo.RotationPeriod);
+        sunGravityObject.rotationSpeed = -1f / (10f * sunInfo.RotationPeriod);
         sunGravityObject.info = sunInfo;
         SetPlanetTexture(sun, "Sun");
 
@@ -146,7 +146,7 @@ public class PlanetInitializer : MonoBehaviour
             gravityObject.radius = planet.Radius * planetScale;
             gravityObject.realScaleRadius = planet.Radius * distanceScale;
             gravityObject.initialVelocity = planet.InitialVelocity * velocityScale * new Vector3(0, 0, 1);
-            gravityObject.rotationSpeed = 1f / (planet.RotationPeriod * 10f);
+            gravityObject.rotationSpeed = -1f / (planet.RotationPeriod * 10f);
             gravityObject.rotationAxis = new Vector3(0f, planet.InitialInclination + planet.Obliquity, 0f);
             gravityObject.info = planet;
             SetPlanetTexture(o, planet.Name);

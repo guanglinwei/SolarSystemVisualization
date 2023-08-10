@@ -27,6 +27,10 @@ public class UIInputController : MonoBehaviour
         toggleRealPlanetScaleField.onValueChanged.AddListener(delegate { OnToggleRealPlanetScaleField(); });
 
         infoPanel = FindObjectOfType<GravityObjectInfoPanel>();
+    }
+
+    private void Start()
+    {
         infoPanel.Init();
     }
 

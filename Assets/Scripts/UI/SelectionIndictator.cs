@@ -58,6 +58,8 @@ public class SelectionIndictator : MonoBehaviour
             lineRenderers[i].transform.localScale = Vector3.one;
             lineRenderers[i].widthMultiplier = 2f;
         }
+
+        gameObject.SetActive(false);
     }
 
     private void Update()
@@ -82,12 +84,13 @@ public class SelectionIndictator : MonoBehaviour
 
     public void SelectGravityObject(GravityObject go)
     {
-        if (go == null)
-            return;
+        gameObject.SetActive(go != null);
 
-        transform.localScale = Vector3.one * (go.GetCurrentRadius() * .65f + 3);
-        // transform.position = go.transform.position;
-        target = go;
+        if (go != null)
+        {
+            transform.localScale = Vector3.one * (go.GetCurrentRadius() * .65f + 3);
+            target = go;
+        }
 
         gravityObjectInfoPanel.SetTargetGravityObject(go);
     }

@@ -138,8 +138,6 @@ public class LockedCameraController : MonoBehaviour
     public void SelectGravityObjectAtMousePos()
     {
         GravityObject go = GetGravityObjectAtMousePos();
-
-        Debug.Log(go?.name);
         selectionIndictator.SelectGravityObject(go);
     }
 
